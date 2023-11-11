@@ -1,14 +1,14 @@
 import React from "react";
+import ConnectButton from "../ConnectButton/ConnectButton";
 
 function Header() {
   return (
     <header className="bg-blue-500 p-4">
       <div className="container mx-auto">
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-white">Sphinx DB</h1>
-          <button className="bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
-            Connect Wallet
-          </button>
+          <h1 className="text-xl font-bold text-white">Sphinx DB</h1>{" "}
+          {/* Text size reduced */}
+          <ConnectButton />
         </div>
       </div>
     </header>
