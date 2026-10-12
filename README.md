@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# Sphinx Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+The web frontend for [Sphinx](https://github.com/SphinxDB), a team project exploring a proof-of-query database: database queries run off chain and their proofs are verified on Starknet. This repo holds only the React UI, where a user connects a Starknet wallet, sends database operations and asks for a query to be proved.
 
-## Available Scripts
+> **Status:** archived. Built in 2023 with a team at StarkNet Istanbul HackerHouse. Kept for reference, not maintained.
 
-In the project directory, you can run:
+## What it does
 
-### `npm start`
+- Connects a Starknet wallet (Argent or Braavos) through starknet-react, shows the shortened address in the header, and disconnects on click.
+- Sends Insert, Update and Delete requests (`POST /insert`, `PUT /update`, `DELETE /delete`) to the Sphinx API and prints the JSON response.
+- Sends a free-form query to `GET /query?query=...` with the "Prove Query" button and shows the result.
+- Shows an example record shape (current state, query, after state) for the database model.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+The API base URL in `src/App.js` is a placeholder (`https://api.example.com`), so the buttons need it pointed at a running Sphinx backend. The wallet setup in `src/provider.js` targets Starknet Goerli, a testnet that has since been retired, so the chain config needs updating before a wallet can connect today.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Tech stack
 
-### `npm test`
+- React 18 (Create React App)
+- Tailwind CSS
+- starknet-react v2 (`@starknet-react/core`, `@starknet-react/chains`) with starknet.js
+- framer-motion
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Running it locally
 
-### `npm run build`
+```bash
+npm install
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Then open http://localhost:3000.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## License
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+MIT, see [LICENSE](LICENSE).
